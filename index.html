@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUSMA KOIRALA PARAJULI</title>
+    <meta name="description" content="Official digital domain of Mrs. Susma Koirala Parajuli.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        burgundy: {
+                            800: '#5c1321',
+                            900: '#3b0a11',
+                            950: '#1a0407',
+                        },
+                        gold: {
+                            300: '#f5e5b8',
+                            400: '#e6c566',
+                            500: '#dfb15b',
+                            600: '#b89228',
+                        },
+                        darkbg: {
+                            900: '#161214',
+                            950: '#0b090a',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+                        'spin-slow': 'spin 30s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 0.3, transform: 'scale(1)' },
+                            '50%': { opacity: 0.65, transform: 'scale(1.08)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Custom Custom Cursor (Desktop only) */
+        @media (min-width: 1024px) {
+            body {
+                cursor: none;
+            }
+            .cursor-dot {
+                pointer-events: none;
+                position: fixed;
+                top: 0; left: 0;
+                width: 6px; height: 6px;
+                background-color: #dfb15b;
+                border-radius: 50%;
+                z-index: 9999;
+                transition: transform 0.08s ease-out;
+            }
+            .cursor-outline {
+                pointer-events: none;
+                position: fixed;
+                top: 0; left: 0;
+                width: 44px; height: 44px;
+                border: 1px solid rgba(223, 177, 91, 0.45);
+                border-radius: 50%;
+                z-index: 9998;
+                transition: transform 0.2s ease-out, width 0.2s ease, height 0.2s ease;
+            }
+        }
+
+        /* Glassmorphism Styles & Soothing Aesthetics */
+        .glass-card {
+            background: rgba(22, 16, 24, 0.92);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(223, 177, 91, 0.35);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(223, 177, 91, 0.15);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #fceecb 0%, #dfb15b 50%, #c99c32 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Borderless Hero Portrait Cutout & Soft Soothing Glow */
+        .hero-img-cutout {
+            filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 30px rgba(223, 177, 91, 0.2));
+            transition: filter 0.5s ease, transform 0.3s ease-out;
+            will-change: transform, filter;
+        }
+        .hero-img-cutout:hover {
+            filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 50px rgba(223, 177, 91, 0.4));
+        }
+
+        /* Hover Text Character Shimmer */
+        .name-hover-glow {
+            transition: text-shadow 0.4s ease, transform 0.4s ease, letter-spacing 0.4s ease;
+            text-decoration: none !important;
+        }
+        .name-hover-glow:hover {
+            text-shadow: 0 0 25px rgba(252, 238, 203, 0.8), 0 0 45px rgba(223, 177, 91, 0.5);
+        }
+
+        /* Hover Popover Display logic */
+        .name-container:hover #time-hover-card,
+        #time-hover-card.is-visible {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+            transform: translateX(-50%) translateY(0) !important;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Ambient Soothing Background Gradient */
+        .soothing-bg {
+            background: radial-gradient(circle at 50% 40%, #1e1324 0%, #120d18 50%, #0a070e 100%);
+        }
+    </style>
+</head>
+<body class="soothing-bg text-cream-100 font-sans transition-colors duration-500 min-h-screen flex flex-col items-center justify-center overflow-x-hidden relative selection:bg-gold-500 selection:text-darkbg-950">
+
+    <!-- Custom Cursor Canvas -->
+    <div id="cursor-dot" class="cursor-dot hidden lg:block"></div>
+    <div id="cursor-outline" class="cursor-outline hidden lg:block"></div>
+
+    <!-- Background Ambient Particle Simulation -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Deep Ambient Glow Background Elements -->
+    <div id="mouse-spotlight" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] sm:w-[850px] sm:h-[850px] rounded-full bg-radial from-gold-500/15 via-burgundy-900/20 to-transparent blur-3xl transition-transform duration-100 pointer-events-none -z-10"></div>
+
+    <!-- Main Minimalist Container: Side-by-side on desktop -->
+    <main class="relative z-10 w-full max-w-6xl mx-auto px-6 py-12 flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16">
+        
+        <!-- Left Side: Completely Borderless Cutout Image with 3D Tilt Hover -->
+        <div id="portrait-wrapper" class="relative flex items-center justify-center cursor-pointer group flex-shrink-0">
+            <img 
+                id="hero-portrait"
+                src="MUMMY WHTSAPP_2.jpeg" 
+                alt="MRS. SUSMA KOIRALA PARAJULI"
+                onerror="this.onerror=null; this.src='MUMMY WHTSAPP.jpeg';"
+                class="w-64 sm:w-80 lg:w-[420px] h-auto object-cover hero-img-cutout group-hover:scale-[1.03] transition-transform duration-500 ease-out"
+            >
+        </div>
+
+        <!-- Right Side: Clean Headline Typography -->
+        <div class="text-center lg:text-left flex flex-col items-center lg:items-start justify-center max-w-2xl relative">
+            <h1 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-light leading-relaxed tracking-wide text-gray-200">
+                WELCOME TO THE OFFICIAL DIGITAL DOMAIN OF <br/>
+                <span id="name-trigger" class="name-container font-bold gold-gradient-text tracking-wider name-hover-glow cursor-pointer inline-block mt-3 text-left focus:outline-none border-none bg-transparent p-0 no-underline relative group z-30">
+                    MRS. SUSMA KOIRALA PARAJULI
+                    
+                    <!-- Hover Tooltip / Popup Box -->
+                    <div id="time-hover-card" class="absolute left-1/2 -translate-x-1/2 top-full mt-4 opacity-0 invisible pointer-events-none transition-all duration-300 transform translate-y-2 z-50 w-[92vw] sm:w-[480px]">
+                        <div class="glass-card rounded-2xl p-4 sm:p-5 text-center bg-black/95 backdrop-blur-md border border-gold-400/40 shadow-2xl">
+                            
+                            <h2 class="font-serif text-lg sm:text-xl font-bold text-gold-300 mb-0.5 tracking-wide">
+                                Time Elapsed on Earth
+                            </h2>
+                            <p class="text-[10px] sm:text-[11px] text-gray-200 tracking-widest uppercase font-semibold mb-4">
+                                MRS. SUSMA KOIRALA PARAJULI
+                            </p>
+
+                            <!-- Single Row Time Pattern Layout with High-Contrast Text -->
+                            <div class="grid grid-cols-4 gap-2 sm:gap-3">
+                                <div class="p-2.5 sm:p-3 rounded-xl bg-burgundy-950/90 border border-gold-400/50 flex flex-col items-center justify-center shadow-inner">
+                                    <span id="total-days-num" class="font-serif text-base sm:text-2xl font-extrabold text-gold-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">0</span>
+                                    <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white mt-1 whitespace-nowrap">Total Days</span>
+                                </div>
+                                <div class="p-2.5 sm:p-3 rounded-xl bg-burgundy-950/90 border border-gold-400/50 flex flex-col items-center justify-center shadow-inner">
+                                    <span id="hours-count" class="font-serif text-base sm:text-2xl font-extrabold text-gold-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">00</span>
+                                    <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white mt-1">Hours</span>
+                                </div>
+                                <div class="p-2.5 sm:p-3 rounded-xl bg-burgundy-950/90 border border-gold-400/50 flex flex-col items-center justify-center shadow-inner">
+                                    <span id="minutes-count" class="font-serif text-base sm:text-2xl font-extrabold text-gold-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">00</span>
+                                    <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white mt-1">Minutes</span>
+                                </div>
+                                <div class="p-2.5 sm:p-3 rounded-xl bg-burgundy-950/90 border border-gold-400/50 flex flex-col items-center justify-center shadow-inner">
+                                    <span id="seconds-count" class="font-serif text-base sm:text-2xl font-extrabold text-gold-400 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] animate-pulse">00</span>
+                                    <span class="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white mt-1">Seconds</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </span>
+            </h1>
+        </div>
+
+    </main>
+
+    <script>
+        // --- 1. Birth Date Calculation (2039 BS Poush 08 = December 23, 1982) ---
+        // Date: December 23, 1982 00:00:00 NPT (UTC+5:45)
+        const birthDate = new Date("1982-12-23T00:00:00+05:45");
+
+        const daysElem = document.getElementById("total-days-num");
+        const hoursElem = document.getElementById("hours-count");
+        const minutesElem = document.getElementById("minutes-count");
+        const secondsElem = document.getElementById("seconds-count");
+
+        function updateTimer() {
+            const now = new Date();
+            const diffInMs = now.getTime() - birthDate.getTime();
+
+            if (diffInMs < 0) return;
+
+            const totalSeconds = Math.floor(diffInMs / 1000);
+            const totalMinutes = Math.floor(totalSeconds / 60);
+            const totalHours = Math.floor(totalMinutes / 60);
+            const totalDays = Math.floor(totalHours / 24);
+
+            const hours = totalHours % 24;
+            const minutes = totalMinutes % 60;
+            const seconds = totalSeconds % 60;
+
+            if (daysElem) daysElem.textContent = totalDays.toLocaleString();
+            if (hoursElem) hoursElem.textContent = String(hours).padStart(2, '0');
+            if (minutesElem) minutesElem.textContent = String(minutes).padStart(2, '0');
+            if (secondsElem) secondsElem.textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+
+        // --- 2. Reliable Hover Trigger & Touch Events ---
+        const nameTrigger = document.getElementById("name-trigger");
+        const timeHoverCard = document.getElementById("time-hover-card");
+
+        if (nameTrigger && timeHoverCard) {
+            nameTrigger.addEventListener("mouseenter", () => {
+                timeHoverCard.classList.add("is-visible");
+            });
+            nameTrigger.addEventListener("mouseleave", () => {
+                timeHoverCard.classList.remove("is-visible");
+            });
+            
+            // Touch device toggle fallback
+            nameTrigger.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                timeHoverCard.classList.toggle("is-visible");
+            });
+        }
+
+        // --- 3. Custom Cursor Implementation ---
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorOutline = document.getElementById('cursor-outline');
+        const mouseSpotlight = document.getElementById('mouse-spotlight');
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let outlineX = mouseX;
+        let outlineY = mouseY;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            if (cursorDot) {
+                cursorDot.style.transform = `translate(${mouseX - 3}px, ${mouseY - 3}px)`;
+            }
+            if (mouseSpotlight) {
+                mouseSpotlight.style.transform = `translate(${mouseX - window.innerWidth / 2}px, ${mouseY - window.innerHeight / 2}px)`;
+            }
+        });
+
+        function animateCursor() {
+            outlineX += (mouseX - outlineX) * 0.15;
+            outlineY += (mouseY - outlineY) * 0.15;
+            if (cursorOutline) {
+                cursorOutline.style.transform = `translate(${outlineX - 22}px, ${outlineY - 22}px)`;
+            }
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // --- 4. Interactive 3D Parallax Tilt for Image ---
+        const portraitWrapper = document.getElementById('portrait-wrapper');
+        const heroPortrait = document.getElementById('hero-portrait');
+
+        if (portraitWrapper && heroPortrait) {
+            portraitWrapper.addEventListener('mousemove', (e) => {
+                const rect = portraitWrapper.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+
+                const rotateX = (-y / rect.height) * 16;
+                const rotateY = (x / rect.width) * 16;
+
+                heroPortrait.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
+            });
+
+            portraitWrapper.addEventListener('mouseleave', () => {
+                heroPortrait.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+            });
+        }
+
+        // --- 5. Ambient Particle Canvas ---
+        const canvas = document.getElementById('bg-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.speedY = -(Math.random() * 0.4 + 0.1);
+                    this.speedX = (Math.random() - 0.5) * 0.2;
+                    this.alpha = Math.random() * 0.5 + 0.1;
+                    this.maxAlpha = this.alpha;
+                }
+                update() {
+                    this.y += this.speedY;
+                    this.x += this.speedX;
+                    if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
+                        this.reset();
+                        this.y = canvas.height + 10;
+                    }
+                }
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.fillStyle = '#dfb15b';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+
+            for (let i = 0; i < 45; i++) {
+                particles.push(new Particle());
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+        }
+    </script>
+</body>
+</html>
